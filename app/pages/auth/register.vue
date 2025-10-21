@@ -66,6 +66,7 @@ const registerSubmit = async () => {
 
     const result = await $authUC.registerUser.exec(credentials)
     successMessage.value = result.message || 'Пользователь успешно зарегистрирован'
+    await navigateTo('/auth/login');
 
   } catch (error: unknown) {
     errorMessage.value = getErrorMessage(error)

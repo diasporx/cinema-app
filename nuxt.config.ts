@@ -14,11 +14,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@pinia/nuxt',
   ],
-  vite: {
-    plugins: [
-      tailwindcss(),
-    ]
-  },
   srcDir: 'app/',
   alias: {
     '~': resolve(rootDir, 'app'),

@@ -51,7 +51,10 @@ const loginSubmit = async () => {
     }
 
     const result = await $authUC.loginUser.exec(credentials);
-    successMessage.value = result.message || 'Успешный вход'
+    successMessage.value = result.message || 'Успешный вход';
+    const tokenCookie = useCookie('auth_token', { maxAge: 60 * 60 * 24 * 7 });
+    tokenCookie.value = result?.token;
+    await navigateTo('/');
 
   } catch (error: unknown) {
     errorMessage.value = getErrorMessage(error)

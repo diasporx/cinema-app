@@ -3,6 +3,8 @@ import type { AuthResponse, AuthCredentials, HttpError } from '@core/domain/auth
 import { AuthError, ValidationError, ConflictError, ServerError, UnauthorizedError } from '@core/domain/auth/AuthErrors'
 
 export class AuthRepoHttp implements IAuthRepo {
+    constructor(private apiBase: string) {}
+
     private handleError(error: unknown): never {
         const httpError = error as HttpError
 
