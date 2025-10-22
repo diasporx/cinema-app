@@ -1,5 +1,6 @@
 import type { ErrorsMessages } from "@core/domain/auth/types";
 
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class AuthValidator {
 
     private static readonly ERRORS_MESSAGES: ErrorsMessages = {

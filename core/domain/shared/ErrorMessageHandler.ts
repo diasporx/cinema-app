@@ -1,18 +1,11 @@
-import {
-    isValidationError,
-    isConflictError,
-    isServerError,
-    isUnauthorizedError,
-    isNetworkError,
-    isAuthError
-} from './AuthErrors'
+import { isHttpError, isValidationError, isConflictError, isServerError, isUnauthorizedError, isNetworkError } from './HttpErrors'
 
 export function getErrorMessage(error: unknown): string {
     if (isValidationError(error) ||
         isConflictError(error) ||
         isServerError(error) ||
         isUnauthorizedError(error) ||
-        isAuthError(error)) {
+        isHttpError(error)) {
         return (error as { message: string }).message
     }
 

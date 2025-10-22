@@ -1,30 +1,9 @@
+import { HttpErrorHandler } from '@core/domain/shared/HttpErrorHandler'
 import type { IAuthRepo } from '@core/domain/auth/IAuthRepo'
-import type { AuthResponse, AuthCredentials, HttpError } from '@core/domain/auth/types'
-import { AuthError, ValidationError, ConflictError, ServerError, UnauthorizedError } from '@core/domain/auth/AuthErrors'
+import type { AuthResponse, AuthCredentials } from '@core/domain/auth/types'
 
 export class AuthRepoHttp implements IAuthRepo {
     constructor(private apiBase: string) {}
-
-    private handleError(error: unknown): never {
-        const httpError = error as HttpError
-
-        const statusCode = httpError?.statusCode || httpError?.status
-        const data = httpError?.data || httpError?.response?._data
-        const message = data?.message || httpError?.message || 'Неизвестная ошибка'
-
-        switch (statusCode) {
-            case 400:
-                throw new ValidationError(message, data)
-            case 401:
-                throw new UnauthorizedError(message, data)
-            case 409:
-                throw new ConflictError(message, data)
-            case 500:
-                throw new ServerError(message, data)
-            default:
-                throw new AuthError(message, statusCode, data)
-        }
-    }
 
     async login(credentials: AuthCredentials): Promise<AuthResponse> {
         try {
@@ -33,7 +12,7 @@ export class AuthRepoHttp implements IAuthRepo {
                 body: credentials,
             })
         } catch (error) {
-            this.handleError(error)
+            HttpErrorHandler.handle(error)
         }
     }
 
@@ -44,7 +23,7 @@ export class AuthRepoHttp implements IAuthRepo {
                 body: credentials,
             })
         } catch (error) {
-            this.handleError(error)
+            HttpErrorHandler.handle(error)
         }
     }
 
@@ -52,7 +31,7 @@ export class AuthRepoHttp implements IAuthRepo {
         try {
             await $fetch('/api/logout', { method: 'POST' })
         } catch (error) {
-            this.handleError(error)
+            HttpErrorHandler.handle(error)
         }
     }
 }

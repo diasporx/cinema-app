@@ -1,7 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 import { fileURLToPath } from 'node:url'
 import { dirname, resolve } from 'node:path'
-import tailwindcss from "@tailwindcss/vite";
 
 const rootDir = dirname(fileURLToPath(import.meta.url))
 

@@ -54,7 +54,7 @@
 </template>
 <script setup lang="ts">
 import type { AuthCredentials } from '@core/domain/auth/types'
-import { getErrorMessage } from '@core/domain/auth/errorHandler'
+import { getErrorMessage } from '@core/domain/shared/ErrorMessageHandler'
 import { AuthValidator } from '@core/domain/auth/AuthValidator'
 import { SUCCESS_MESSAGES } from '@core/domain/auth/successMessages'
 import { useAlert } from '@/composables/useAlert'
