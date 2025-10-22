@@ -1,22 +1,21 @@
 <template>
   <div>
     <NuxtLayout>
+      <template #titlePage>
+        <h1 class="text-4xl font-bold">{{ currentPageTitle }}</h1>
+      </template>
       <NuxtPage />
     </NuxtLayout>
   </div>
 </template>
 <script setup lang="ts">
+import { pageMeta, type PageMeta } from "@/config/pageMeta";
 import "@/assets/main.css";
 import "@/assets/scss/main.scss";
+
+const route = useRoute();
+const currentPageTitle = computed(() => {
+  const meta: PageMeta | undefined = pageMeta[route.path];
+  return meta?.title || '';
+});
 </script>
-<style scoped>
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.2s;
-}
-.page-enter-from,
-.page-leave-to {
-  opacity: 0;
-  filter: blur(5px);
-}
-</style>
