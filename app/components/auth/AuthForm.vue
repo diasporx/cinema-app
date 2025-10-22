@@ -58,7 +58,9 @@ import { getErrorMessage } from '@core/domain/auth/errorHandler'
 import { AuthValidator } from '@core/domain/auth/AuthValidator'
 import { SUCCESS_MESSAGES } from '@core/domain/auth/successMessages'
 import { useAlert } from '@/composables/useAlert'
+import { useAuthToken } from '@/composables/useAuthToken'
 
+const { setToken } = useAuthToken();
 const props = defineProps<{ mode: 'login' | 'register' }>();
 const isLogin = props.mode === 'login';
 
@@ -109,9 +111,10 @@ const submit = async () => {
     });
 
     if (isLogin) {
+      setToken(result?.token);
       await navigateTo('/');
     } else {
-      await navigateTo('/auth/login');
+      await navigateTo('/movies');
     }
 
   } catch (error: unknown) {

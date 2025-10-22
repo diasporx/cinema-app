@@ -1,5 +1,5 @@
 <template>
-  <div class="login-block p-5">
+  <div class="auth-block p-5">
     <AuthForm mode="login" />
   </div>
 </template>

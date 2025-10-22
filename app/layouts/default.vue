@@ -3,7 +3,10 @@
     <div class="default-layout-child">
       <slot name="titlePage"></slot>
       <div class="default-layout-child-block">
-        <slot />
+        <MenuComponent />
+        <div class="content">
+          <slot />
+        </div>
       </div>
     </div>
   </div>

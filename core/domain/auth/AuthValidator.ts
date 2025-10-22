@@ -1,4 +1,4 @@
-type ErrorsMessages = Record<string, string>;
+import type { ErrorsMessages } from "@core/domain/auth/types";
 
 export class AuthValidator {
 

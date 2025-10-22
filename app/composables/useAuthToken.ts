@@ -10,6 +10,7 @@ interface AuthTokenComposable {
     getToken: () => string | null;
     setToken: (token: string, maxAge?: number) => void;
     isAuthenticated: () => boolean;
+    clearToken: () => void;
     decodeToken: (token: string | null) => JwtPayload | null;
 }
 
@@ -56,6 +57,7 @@ export const useAuthToken = (): AuthTokenComposable => {
     return {
         getToken,
         setToken,
+        clearToken,
         isAuthenticated,
         decodeToken,
     };

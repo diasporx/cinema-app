@@ -1,5 +1,14 @@
+.form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 320px;
+}
+
 .input-field {
   display: flex;
+  width: 100%;
   flex-direction: column;
   gap: 10px;
   input {
@@ -25,7 +34,8 @@
 }
 
 .button {
-  padding: 7px 15px;
+  padding: 10px 25px;
+  font-weight: bold;
   border-radius: 8px;
   font-size: 16px;
   border: 1px solid #fff;

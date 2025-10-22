@@ -34,3 +34,6 @@ export interface AuthCredentials {
     username: string
     password: string
 }
+
+export type ErrorsMessages = Record<string, string>;
+export type SuccessMessages = Record<string, string>;
