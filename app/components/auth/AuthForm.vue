@@ -1,38 +1,46 @@
 <template>
   <div class="form">
-    <div class="input-field mb-4">
-      <label for="userNameField">Логин</label>
+    <div
+        class="input-field mb-4"
+        :class="errorMessages?.login ? 'error' : ''"
+    >
+      <label for="username">Логин</label>
       <input
-          id="userNameField"
-          v-model="loginField"
+          id="username"
+          v-model="login"
           type="text"
           placeholder="username"
       >
+      <span v-if="errorMessages?.login" class="hint">{{ errorMessages?.login }}</span>
     </div>
-    <div class="input-field mb-4">
-      <label for="passwordField">Пароль</label>
+    <div
+        class="input-field mb-4"
+        :class="errorMessages?.password ? 'error' : ''"
+    >
+      <label for="password">Пароль</label>
       <input
-          id="passwordField"
-          v-model="passField"
+          id="password"
+          v-model="password"
           type="password"
           placeholder="password"
       >
+      <span v-if="errorMessages?.password" class="hint">{{ errorMessages?.password }}</span>
     </div>
-    <div v-if="mode === 'register'" class="input-field mb-4">
-      <label for="RepeatPasswordField">Пароль</label>
+    <div
+        v-if="!isLogin"
+        class="input-field mb-4"
+        :class="errorMessages?.repeatPassword ? 'error' : ''"
+    >
+      <label for="repeatPassword">Пароль</label>
       <input
-          id="RepeatPasswordField"
-          v-model="repeatPassField"
+          id="repeatPassword"
+          v-model="repeatPassword"
           type="password"
           placeholder="password"
       >
+      <span v-if="errorMessages?.repeatPassword" class="hint">{{ errorMessages?.repeatPassword }}</span>
     </div>
-    <div v-if="errorMessage.length" class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
-      <span class="font-medium">{{ errorMessage }}</span>
-    </div>
-    <div v-if="successMessage.length" class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400" role="alert">
-      <span class="font-medium">{{ successMessage }}</span>
-    </div>
+
 
     <button class="button mb-4" type="button" @click="submit">{{ isLogin ? 'Войти' : 'Зарегестрироваться' }}</button>
 
@@ -48,39 +56,70 @@
 import type { AuthCredentials } from '@core/domain/auth/types'
 import { getErrorMessage } from '@core/domain/auth/errorHandler'
 import { AuthValidator } from '@core/domain/auth/AuthValidator'
+import { SUCCESS_MESSAGES } from '@core/domain/auth/successMessages'
+import { useAlert } from '@/composables/useAlert'
 
 const props = defineProps<{ mode: 'login' | 'register' }>();
 const isLogin = props.mode === 'login';
 
-const loginField = ref("");
-const passField = ref("");
-const repeatPassField = ref("");
-const errorMessage = ref("");
-const successMessage = ref("");
+const login = ref("");
+const password = ref("");
+const repeatPassword = ref("");
+const errorMessages = ref<Record<string, string>>({});
 
 const { $authUC } = useNuxtApp();
+const { addAlert } = useAlert();
 
 const submit = async () => {
+  errorMessages.value = {};
+
+  const loginError = AuthValidator.validateUsernameReturn(login.value);
+  if (loginError) {
+    errorMessages.value.login = loginError;
+  }
+
+  const passwordError = AuthValidator.validatePasswordReturn(password.value);
+  if (passwordError) {
+    errorMessages.value.password = passwordError;
+  }
+
   if (!isLogin) {
-    const passwordMatchError = AuthValidator.validatePasswordMatch(passField.value, repeatPassField.value);
+    const passwordMatchError = AuthValidator.validatePasswordMatch(password.value, repeatPassword.value);
     if (passwordMatchError) {
-      errorMessage.value = passwordMatchError;
-      return;
+      errorMessages.value.repeatPassword = passwordMatchError;
     }
   }
+
+  if (Object.keys(errorMessages.value).length > 0) {
+    return;
+  }
+
   try {
-    errorMessage.value = '';
     const credentials: AuthCredentials = {
-      username: loginField.value,
-      password: passField.value
+      username: login.value,
+      password: password.value
     }
 
     const result = isLogin ? await $authUC.loginUser.exec(credentials) : await $authUC.registerUser.exec(credentials);
-    successMessage.value = result.message || 'Пользователь успешно зарегистрирован'
-    await navigateTo('/auth/login');
+
+    addAlert({
+      type: 'success',
+      message: result?.message || (isLogin ? SUCCESS_MESSAGES.LOGIN_SUCCESS : SUCCESS_MESSAGES.REGISTER_SUCCESS) as string,
+      duration: 3000
+    });
+
+    if (isLogin) {
+      await navigateTo('/');
+    } else {
+      await navigateTo('/auth/login');
+    }
 
   } catch (error: unknown) {
-    errorMessage.value = getErrorMessage(error)
+    addAlert({
+      type: 'error',
+      message: getErrorMessage(error),
+      duration: 5000
+    });
   }
 }
 </script>

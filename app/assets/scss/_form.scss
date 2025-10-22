@@ -13,6 +13,15 @@
       outline: none;
     }
   }
+
+  &.error {
+    input {
+      border: 1px solid #ff5959;
+    }
+    span.hint {
+      color: #ff5959;
+    }
+  }
 }
 
 .button {

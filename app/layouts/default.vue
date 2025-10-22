@@ -8,24 +8,3 @@
     </div>
   </div>
 </template>
-
-<style scoped lang="scss">
-.default-layout {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100lvh;
-  &-child {
-    min-width: 780px;
-    min-height: 560px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    &-block {
-      width: 100%;
-      height: 100%;
-      border: 1px solid #fff;
-    }
-  }
-}
-</style>
