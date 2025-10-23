@@ -7,3 +7,15 @@ export interface Movie {
     posterImage: string,
     rating: number,
 }
+
+export interface MovieSession {
+    id: number;
+    movieId: number;
+    cinemaId: number;
+    startTime: string;
+}
+
+export interface SessionNotFound {
+    message: string;
+    error: string;
+}

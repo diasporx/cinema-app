@@ -9,6 +9,9 @@ export const pageMeta: Record<string, PageMeta> = {
     '/movies': {
         title: 'Фильмы',
     },
+    '/movie/:id()': {
+        title: 'Фильм',
+    },
     '/cinemas': {
         title: 'Кинотеатры',
     },

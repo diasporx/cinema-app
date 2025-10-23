@@ -1,0 +1,23 @@
+.movies {
+  img {
+    max-width: 50px;
+  }
+}
+
+.movie {
+  padding: 2rem;
+  overflow-y: scroll;
+  height: 100%;
+  &-header {
+    padding: 2rem;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    img {
+      width: 250px;
+    }
+    p {
+      font-size: 20px;
+    }
+  }
+}

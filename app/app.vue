@@ -2,7 +2,9 @@
   <div>
     <NuxtLayout>
       <template #titlePage>
-        <h1 class="text-4xl font-bold">{{ currentPageTitle }}</h1>
+        <div class="title-page">
+          <h1 class="text-4xl font-bold">{{ currentPageTitle }}</h1>
+        </div>
       </template>
       <NuxtPage />
     </NuxtLayout>
@@ -16,7 +18,8 @@ import "@/assets/scss/main.scss";
 
 const route = useRoute();
 const currentPageTitle = computed(() => {
-  const meta: PageMeta | undefined = pageMeta[route.path];
+  const matchedPath = route.matched[0]?.path || route.path;
+  const meta: PageMeta | undefined = pageMeta[matchedPath];
   return meta?.title || '';
 });
 </script>

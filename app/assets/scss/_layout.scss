@@ -15,16 +15,24 @@
     gap: 20px;
     &-block {
       flex: 1;
+      overflow: scroll;
+      max-height: 80vh;
       width: 100%;
       border: 2px solid #fff;
       display: flex;
-      max-width: 1200px;
+      //max-width: 1350px;
     }
   }
 }
 
 aside {
-  max-width: 30%;
+  max-width: 250px;
+  background: #000;
+  z-index: 1;
+  position: sticky;
+  top: 0;
+  left: 0;
+  flex-shrink: 0;
   padding-top: 50px;
   width: 100%;
   max-height: 80%;
@@ -47,9 +55,10 @@ aside {
   }
 }
 
+.title-page {
+  width: 100%;
+}
+
 .content {
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }

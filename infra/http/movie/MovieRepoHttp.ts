@@ -1,5 +1,5 @@
 import type { IMovieRepo } from "@core/domain/movie/IMovieRepo";
-import type { Movie } from "@core/domain/movie/types";
+import type { Movie, MovieSession } from "@core/domain/movie/types";
 import { HttpErrorHandler } from "@core/domain/shared/HttpErrorHandler";
 
 export class MovieRepoHttp implements IMovieRepo {
@@ -15,6 +15,15 @@ export class MovieRepoHttp implements IMovieRepo {
         } catch (error) {
             HttpErrorHandler.handle(error)
             return []
+        }
+    }
+
+    async getSessionsForMovie(movieId: number): Promise<MovieSession[]> {
+        try {
+            return await $fetch<MovieSession[]>(`/api/movies/${movieId}/sessions`, { method: 'GET' });
+        } catch (error) {
+            HttpErrorHandler.handle(error);
+            return [];
         }
     }
 }

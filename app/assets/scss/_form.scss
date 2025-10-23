@@ -33,10 +33,20 @@
   }
 }
 
+.auth-block {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
 .button {
+  white-space: nowrap;
   padding: 10px 25px;
   font-weight: bold;
   border-radius: 8px;
   font-size: 16px;
   border: 1px solid #fff;
+  cursor: pointer;
 }

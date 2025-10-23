@@ -41,7 +41,6 @@
       <span v-if="errorMessages?.repeatPassword" class="hint">{{ errorMessages?.repeatPassword }}</span>
     </div>
 
-
     <button class="button mb-4" type="button" @click="submit">{{ isLogin ? 'Войти' : 'Зарегестрироваться' }}</button>
 
     <template v-if="isLogin">
