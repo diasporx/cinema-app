@@ -16,14 +16,14 @@ describe('LoginUser', () => {
     loginUser = new LoginUser(mockRepo)
   })
 
-  describe('exec', () => {
+  describe('login', () => {
     it('должен валидировать учетные данные и вызывать repo.login с правильными учетными данными', async () => {
       const credentials: AuthCredentials = { username: 'validuser', password: 'ValidPass123' }
       const expectedResponse: AuthResponse = { token: 'fake-token' }
 
       vi.mocked(mockRepo.login).mockResolvedValue(expectedResponse)
 
-      const result = await loginUser.exec(credentials)
+      const result = await loginUser.login(credentials)
 
       expect(mockRepo.login).toHaveBeenCalledWith(credentials)
       expect(result).toEqual(expectedResponse)
@@ -32,14 +32,14 @@ describe('LoginUser', () => {
     it('должен выбрасывать ошибку для некорректного имени пользователя', async () => {
       const credentials: AuthCredentials = { username: 'short', password: 'ValidPass123' }
 
-      await expect(loginUser.exec(credentials)).rejects.toThrow('Имя пользователя должно содержать минимум 8 символов')
+      await expect(loginUser.login(credentials)).rejects.toThrow('Имя пользователя должно содержать минимум 8 символов')
       expect(mockRepo.login).not.toHaveBeenCalled()
     })
 
     it('должен выбрасывать ошибку для некорректного пароля', async () => {
       const credentials: AuthCredentials = { username: 'validuser', password: 'short' }
 
-      await expect(loginUser.exec(credentials)).rejects.toThrow('Пароль должен содержать минимум 8 символов')
+      await expect(loginUser.login(credentials)).rejects.toThrow('Пароль должен содержать минимум 8 символов')
       expect(mockRepo.login).not.toHaveBeenCalled()
     })
 
@@ -49,7 +49,7 @@ describe('LoginUser', () => {
 
       vi.mocked(mockRepo.login).mockRejectedValue(error)
 
-      await expect(loginUser.exec(credentials)).rejects.toThrow('Login failed')
+      await expect(loginUser.login(credentials)).rejects.toThrow('Login failed')
     })
   })
 })

@@ -5,7 +5,7 @@ import { AuthValidator } from '@core/domain/auth/AuthValidator'
 export class RegisterUser {
     constructor(private repo: IAuthRepo) {}
 
-    async exec(credentials: AuthCredentials): Promise<AuthResponse> {
+    async register(credentials: AuthCredentials): Promise<AuthResponse> {
         AuthValidator.validateRegisterCredentials(credentials.username, credentials.password)
         return await this.repo.register(credentials)
     }

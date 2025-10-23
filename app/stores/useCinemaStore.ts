@@ -20,7 +20,7 @@ export const useCinemasStore = defineStore('cinema', () => {
         error.value = null
         try {
             const { $cinemaUC } = useNuxtApp()
-            cinemas.value = await $cinemaUC.getCinemas.exec()
+            cinemas.value = await $cinemaUC.getCinemas.getAll()
         } catch (err: unknown) {
             console.error('Ошибка загрузки кинотеатров:', err)
             error.value = 'Ошибка загрузки кинотеатров'

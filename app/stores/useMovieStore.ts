@@ -20,7 +20,7 @@ export const useMovieStore = defineStore('movie', () => {
         error.value = null
         try {
             const { $movieUC } = useNuxtApp()
-            movies.value = await $movieUC.getMovies.exec()
+            movies.value = await $movieUC.getMovies.getAll()
         } catch (err: unknown) {
             console.error('Ошибка загрузки фильмов:', err)
             error.value = 'Ошибка загрузки фильмов'

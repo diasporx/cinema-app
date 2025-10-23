@@ -4,7 +4,7 @@ import type { Cinema, CinemaSession } from "@core/domain/cinema/types";
 export class Cinemas {
     constructor(private repo: ICinemaRepo) {}
 
-    async exec(): Promise<Cinema[]> {
+    async getAll(): Promise<Cinema[]> {
         return await this.repo.getCinemas();
     }
 

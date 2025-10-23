@@ -4,7 +4,7 @@ import type { Movie, MovieSession } from "@core/domain/movie/types";
 export class Movies {
     constructor(private repo: IMovieRepo) {}
 
-    async exec(): Promise<Movie[]> {
+    async getAll(): Promise<Movie[]> {
         return await this.repo.getMovies();
     }
 
