@@ -1,4 +1,11 @@
 .movies {
+  font-size: 22px;
+  table {
+    border-collapse: collapse;
+    td, th {
+      white-space: normal;       /* разрешаем перенос строк */
+    }
+  }
   img {
     max-width: 50px;
   }
@@ -16,8 +23,36 @@
     img {
       width: 250px;
     }
-    p {
+    .description {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       font-size: 20px;
     }
   }
+  &-content {
+    .date-title {
+      padding: 15px 0;
+      border-bottom: 1px solid #fff;
+    }
+    .times {
+      padding: 15px 0;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .cinema-block {
+      padding: 15px 0;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      align-items: center;
+    }
+  }
+}
+
+.cinema {
+  font-size: 22px;
+  padding: 2rem;
+  height: 100%;
 }

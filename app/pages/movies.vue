@@ -25,7 +25,7 @@
           {{ movie?.title }}
         </th>
         <td class="px-6 py-4">
-          {{ movie?.lengthMinutes }}
+          {{ formatMinutesToHM(movie?.lengthMinutes) }}
         </td>
         <td class="px-6 py-4">
           {{ movie?.rating }}
@@ -41,10 +41,10 @@
 
 <script setup lang="ts">
 import { useMovieStore } from '~/stores/useMovieStore'
+import { formatMinutesToHM } from "~/composables/useUtils"
 
 const movieStore = useMovieStore()
 const { movies } = storeToRefs(movieStore)
-// const { $movieUC } = useNuxtApp();
 
 onBeforeMount(async () => {
   if (movieStore.movies.length === 0) {
@@ -55,8 +55,4 @@ onBeforeMount(async () => {
 const getImage = computed(() => (posterImage: string) => {
   return `http://localhost:3022${posterImage}`
 })
-
-// const getSessionsForMovie = async (movieId: number) => {
-//   await $movieUC.getMovies.getSessionsForMovie(movieId);
-// }
 </script>
