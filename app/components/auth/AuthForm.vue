@@ -55,7 +55,7 @@
 import type { AuthCredentials } from '@core/domain/auth/types'
 import { getErrorMessage } from '@core/domain/shared/ErrorMessageHandler'
 import { AuthValidator } from '@core/domain/auth/AuthValidator'
-import { SUCCESS_MESSAGES } from '@core/domain/auth/successMessages'
+import { SUCCESS_MESSAGES } from '@core/domain/auth/SuccessMessages'
 import { useAlert } from '@/composables/useAlert'
 import { useAuthToken } from '@/composables/useAuthToken'
 
@@ -101,7 +101,7 @@ const submit = async () => {
       password: password.value
     }
 
-    const result = isLogin ? await $authUC.loginUser.exec(credentials) : await $authUC.registerUser.exec(credentials);
+    const result = isLogin ? await $authUC.loginUser.login(credentials) : await $authUC.registerUser.register(credentials);
 
     addAlert({
       type: 'success',

@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { NAVIGATION_ITEMS } from '@core/domain/navigation/constants';
+import { NAVIGATION_ITEMS } from '../../core/domain/navigation/Сonstants';
 import { useAuthToken } from '@/composables/useAuthToken';
 
 const { isAuthenticated } = useAuthToken();

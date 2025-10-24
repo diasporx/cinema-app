@@ -1,6 +1,6 @@
 import { useAuthToken } from "@/composables/useAuthToken";
 import { useAlert } from '@/composables/useAlert'
-import { SUCCESS_MESSAGES } from "../../core/domain/auth/successMessages";
+import { SUCCESS_MESSAGES } from "@core/domain/auth/SuccessMessages";
 const { clearToken } = useAuthToken();
 const { addAlert } = useAlert();
 

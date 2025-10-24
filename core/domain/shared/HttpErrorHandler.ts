@@ -1,4 +1,4 @@
-import type { HttpError } from '@core/domain/auth/types'
+import type {HttpError} from '@core/domain/auth/types'
 import {
     ValidationError,
     ConflictError,

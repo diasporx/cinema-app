@@ -20,16 +20,6 @@ export interface HttpError {
     }
 }
 
-export interface LoginForm {
-    username: string
-    password: string
-}
-
-export interface RegisterForm {
-    username: string
-    password: string
-}
-
 export interface AuthCredentials {
     username: string
     password: string

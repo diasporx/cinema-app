@@ -1,0 +1,16 @@
+.book-session {
+  font-size: 22px;
+  padding: 2rem;
+  .cinema-row {
+    white-space: nowrap;
+  }
+  .row-text {
+    padding: 10px;
+  }
+  .seats-wrapper {
+    .seat {
+      align-self: center;
+      justify-self: center;
+    }
+  }
+}

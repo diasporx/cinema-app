@@ -7,7 +7,14 @@
         <div v-for="(sessions, cinemaId) in cinemasForDate" :key="cinemaId" class="cinema-block">
           <h2 class="cinema-name text-2xl font-bold">{{ getMovieName(cinemaId) }}</h2>
           <div class="times">
-            <button v-for="session in sessions" :key="session.id" class="button time">{{ formatTime(session.startTime) }}</button>
+            <NuxtLink
+                v-for="session in sessions"
+                :key="session.id"
+                :to="`/booking/session/${session.id}`"
+                class="button time"
+            >
+              {{ formatTime(session.startTime) }}
+            </NuxtLink>
           </div>
         </div>
       </div>
