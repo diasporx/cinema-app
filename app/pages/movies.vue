@@ -13,7 +13,7 @@
       <tbody>
         <tr v-for="movie in movies" :key="movie?.id">
           <td class="px-6 py-4">
-            <img :src="getImage(movie?.posterImage)" :alt="movie?.title" >
+            <img :src="getImage(movie?.posterImage)" :alt="movie?.title" />
           </td>
           <th
             scope="row"
@@ -28,9 +28,9 @@
             {{ movie?.rating }}
           </td>
           <td class="px-6 py-4">
-            <NuxtLink class="button" :to="`/movie/${movie?.id}`"
-              >Посмотреть сеансы</NuxtLink
-            >
+            <NuxtLink class="button" :to="`/movie/${movie?.id}`">
+              Посмотреть сеансы
+            </NuxtLink>
           </td>
         </tr>
       </tbody>

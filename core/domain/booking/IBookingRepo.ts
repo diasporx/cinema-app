@@ -9,7 +9,7 @@ export interface IBookingRepo {
   getDetailSession(sessionId: number): Promise<Session[]>;
   bookSeats(
     movieSessionId: number,
-    request: BookSeatsRequest
+    request: BookSeatsRequest,
   ): Promise<BookSeatsResponse>;
   getMyBookings(): Promise<Booking[]>;
 }

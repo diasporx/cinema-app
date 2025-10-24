@@ -4,10 +4,12 @@
 
     <ul class="mb-4">
       <li>
-        Фильм: <b>{{ movieName }}</b>
+        Фильм:
+        <b>{{ movieName }}</b>
       </li>
       <li>
-        Кинотеатр: <b>{{ cinemaName }}</b>
+        Кинотеатр:
+        <b>{{ cinemaName }}</b>
       </li>
       <li>
         Время:

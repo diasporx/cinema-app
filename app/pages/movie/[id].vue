@@ -2,7 +2,7 @@
   <div class="movie">
     <h1 class="text-4xl font-bold text-center">{{ movie?.title }}</h1>
     <div class="movie-header">
-      <img :src="getImage(movie?.posterImage as string)" :alt="movie?.title">
+      <img :src="getImage(movie?.posterImage as string)" :alt="movie?.title" />
       <div class="description">
         <p>
           {{ movie?.description }}

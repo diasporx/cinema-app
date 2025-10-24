@@ -15,14 +15,14 @@ export const formatDate = (
   const shortYear = year.toString().slice(-2);
 
   switch (format) {
-  case 'DD.MM':
-    return `${day}.${month}`;
-  case 'DD.MM.YY':
-    return `${day}.${month}.${shortYear}`;
-  case 'DD.MM.YYYY':
-    return `${day}.${month}.${year}`;
-  default:
-    throw new Error('Unsupported format');
+    case 'DD.MM':
+      return `${day}.${month}`;
+    case 'DD.MM.YY':
+      return `${day}.${month}.${shortYear}`;
+    case 'DD.MM.YYYY':
+      return `${day}.${month}.${year}`;
+    default:
+      throw new Error('Unsupported format');
   }
 };
 

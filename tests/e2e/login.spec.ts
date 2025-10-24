@@ -5,8 +5,8 @@ test('должен показать ошибку для некорректных
 }) => {
   await page.goto('/auth/login');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'invaliduser');
-  await page.fill('#passwordField', 'wrongpass');
+  await page.fill('#username', 'invaliduser');
+  await page.fill('#password', 'wrongpass');
 
   await page.click('button:has-text("Войти")');
 
@@ -20,8 +20,8 @@ test('должен показать ошибку валидации для ко�
 }) => {
   await page.goto('/auth/login');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'short');
-  await page.fill('#passwordField', 'ValidPass123');
+  await page.fill('#username', 'short');
+  await page.fill('#password', 'ValidPass123');
 
   await page.click('button:has-text("Войти")');
 
@@ -35,8 +35,8 @@ test('должен показать ошибку валидации для сл�
 }) => {
   await page.goto('/auth/login');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'validuser');
-  await page.fill('#passwordField', 'weak');
+  await page.fill('#username', 'validuser');
+  await page.fill('#password', 'weak');
 
   await page.click('button:has-text("Войти")');
 

@@ -18,19 +18,19 @@ export class HttpErrorHandler {
     const message = data?.message || httpError?.message || 'Неизвестная ошибка';
 
     switch (statusCode) {
-    case 400:
-      throw new ValidationError(message, data);
-    case 401:
-      throw new UnauthorizedError(message, data);
-    case 409:
-      throw new ConflictError(message, data);
-    case 500:
-      throw new ServerError(message, data);
-    default:
-      if (statusCode === 0 || !statusCode) {
-        throw new NetworkError('Проверьте подключение к интернету');
-      }
-      throw new BaseHttpError(message, statusCode, data);
+      case 400:
+        throw new ValidationError(message, data);
+      case 401:
+        throw new UnauthorizedError(message, data);
+      case 409:
+        throw new ConflictError(message, data);
+      case 500:
+        throw new ServerError(message, data);
+      default:
+        if (statusCode === 0 || !statusCode) {
+          throw new NetworkError('Проверьте подключение к интернету');
+        }
+        throw new BaseHttpError(message, statusCode, data);
     }
   }
 }

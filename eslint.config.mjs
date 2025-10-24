@@ -4,6 +4,7 @@ import withNuxt from './.nuxt/eslint.config.mjs';
 export default withNuxt(
   // Your custom configs here
   {
+    ignorePatterns: ['tests/**/*'],
     rules: {
       'object-curly-spacing': ['error', 'always'],
       'no-console': 'warn',

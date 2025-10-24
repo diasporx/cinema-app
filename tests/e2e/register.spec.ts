@@ -8,21 +8,21 @@ test('должен успешно зарегистрироваться с кор
 
   await page.goto('/auth/register');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', username);
-  await page.fill('#passwordField', password);
-  await page.fill('#RepeatPasswordField', password);
+  await page.fill('#username', username);
+  await page.fill('#password', password);
+  await page.fill('#repeatPassword', password);
 
   await page.click('button:has-text("Зарегестрироваться")');
 
-  await expect(page).toHaveURL('/auth/login');
+  await expect(page).toHaveURL('/movies');
 });
 
 test('должен показать ошибку когда пароли не совпадают', async ({ page }) => {
   await page.goto('/auth/register');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'newuser123');
-  await page.fill('#passwordField', 'ValidPass123');
-  await page.fill('#RepeatPasswordField', 'DifferentPass123');
+  await page.fill('#username', 'newuser123');
+  await page.fill('#password', 'ValidPass123');
+  await page.fill('#repeatPassword', 'DifferentPass123');
 
   await page.click('button:has-text("Зарегестрироваться")');
 
@@ -32,9 +32,9 @@ test('должен показать ошибку когда пароли не с
 test('должен показать ошибку при неудачной регистрации', async ({ page }) => {
   await page.goto('/auth/register');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'existinguser');
-  await page.fill('#passwordField', 'ValidPass123');
-  await page.fill('#RepeatPasswordField', 'ValidPass123');
+  await page.fill('#username', 'existinguser');
+  await page.fill('#password', 'ValidPass123');
+  await page.fill('#repeatPassword', 'ValidPass123');
 
   await page.click('button:has-text("Зарегестрироваться")');
 
@@ -48,9 +48,9 @@ test('должен показать ошибку валидации для ко�
 }) => {
   await page.goto('/auth/register');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'short');
-  await page.fill('#passwordField', 'ValidPass123');
-  await page.fill('#RepeatPasswordField', 'ValidPass123');
+  await page.fill('#username', 'short');
+  await page.fill('#password', 'ValidPass123');
+  await page.fill('#repeatPassword', 'ValidPass123');
 
   await page.click('button:has-text("Зарегестрироваться")');
 
@@ -64,9 +64,9 @@ test('должен показать ошибку валидации для сл�
 }) => {
   await page.goto('/auth/register');
   await page.waitForLoadState('networkidle');
-  await page.fill('#userNameField', 'validuser123');
-  await page.fill('#passwordField', 'weak');
-  await page.fill('#RepeatPasswordField', 'weak');
+  await page.fill('#username', 'validuser123');
+  await page.fill('#password', 'weak');
+  await page.fill('#repeatPassword', 'weak');
 
   await page.click('button:has-text("Зарегестрироваться")');
 

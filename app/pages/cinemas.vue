@@ -20,9 +20,9 @@
             {{ cinema?.address }}
           </td>
           <td class="px-6 py-4">
-            <NuxtLink class="button" :to="`/cinema/${cinema?.id}`"
-              >Посмотреть сеансы</NuxtLink
-            >
+            <NuxtLink class="button" :to="`/cinema/${cinema?.id}`">
+              Посмотреть сеансы
+            </NuxtLink>
           </td>
         </tr>
       </tbody>

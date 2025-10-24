@@ -2,10 +2,10 @@
   <div class="form">
     <div class="input-field mb-4" :class="errorMessages?.login ? 'error' : ''">
       <label for="username">Логин</label>
-      <input id="username" v-model="login" type="text" placeholder="username" >
-      <span v-if="errorMessages?.login" class="hint">{{
-        errorMessages?.login
-      }}</span>
+      <input id="username" v-model="login" type="text" placeholder="username" />
+      <span v-if="errorMessages?.login" class="hint">
+        {{ errorMessages?.login }}
+      </span>
     </div>
     <div
       class="input-field mb-4"
@@ -17,10 +17,10 @@
         v-model="password"
         type="password"
         placeholder="password"
-      >
-      <span v-if="errorMessages?.password" class="hint">{{
-        errorMessages?.password
-      }}</span>
+      />
+      <span v-if="errorMessages?.password" class="hint">
+        {{ errorMessages?.password }}
+      </span>
     </div>
     <div
       v-if="!isLogin"
@@ -33,10 +33,10 @@
         v-model="repeatPassword"
         type="password"
         placeholder="password"
-      >
-      <span v-if="errorMessages?.repeatPassword" class="hint">{{
-        errorMessages?.repeatPassword
-      }}</span>
+      />
+      <span v-if="errorMessages?.repeatPassword" class="hint">
+        {{ errorMessages?.repeatPassword }}
+      </span>
     </div>
 
     <button class="button mb-4" type="button" @click="submit">
@@ -46,9 +46,9 @@
     <template v-if="isLogin">
       <h2>
         Если у вас нет аккаунта
-        <NuxtLink class="underline" to="/auth/register"
-          >зарегистрируйтесь</NuxtLink
-        >
+        <NuxtLink class="underline" to="/auth/register">
+          зарегистрируйтесь
+        </NuxtLink>
       </h2>
     </template>
     <template v-else>

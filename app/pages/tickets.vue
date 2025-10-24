@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tickets">
     <h1>Мои билеты</h1>
     <div v-if="bookings">
       <pre>{{ JSON.stringify(bookings, null, 2) }}</pre>
