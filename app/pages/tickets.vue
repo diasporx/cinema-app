@@ -7,7 +7,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import type { Booking } from "@core/domain/booking/types";
+import type { Booking } from '@core/domain/booking/types';
 
 const { $bookingUC } = useNuxtApp();
 const bookings = ref<Booking[] | null>(null);
@@ -16,6 +16,7 @@ onMounted(async () => {
   try {
     bookings.value = await $bookingUC.getBookings.getBookings();
   } catch (error) {
+    // eslint-disable-next-line no-console
     console.error(error);
   }
 });

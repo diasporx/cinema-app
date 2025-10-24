@@ -3,8 +3,8 @@
     <ul>
       <li v-for="item in allItems" :key="item.route">
         <NuxtLink
-            :to="item.route"
-            :class="isActive(item.route) ? 'active' : ''"
+          :to="item.route"
+          :class="isActive(item.route) ? 'active' : ''"
         >
           {{ item.label }}
         </NuxtLink>

@@ -12,9 +12,9 @@
   </div>
 </template>
 <script setup lang="ts">
-import { pageMeta, type PageMeta } from "@/config/pageMeta";
-import "@/assets/main.css";
-import "@/assets/scss/main.scss";
+import { pageMeta, type PageMeta } from '@/config/pageMeta';
+import '@/assets/main.css';
+import '@/assets/scss/main.scss';
 
 const route = useRoute();
 const currentPageTitle = computed(() => {

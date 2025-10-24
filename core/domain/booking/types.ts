@@ -1,35 +1,35 @@
 export interface BookedSeat {
-    rowNumber: number;
-    seatNumber: number;
+  rowNumber: number;
+  seatNumber: number;
 }
 
 export interface SeatsLayout {
-    rows: number;
-    seatsPerRow: number;
+  rows: number;
+  seatsPerRow: number;
 }
 
 export interface Session {
-    id: number;
-    movieId: number;
-    cinemaId: number;
-    startTime: string;
-    seats: SeatsLayout;
-    bookedSeats: BookedSeat[];
+  id: number;
+  movieId: number;
+  cinemaId: number;
+  startTime: string;
+  seats: SeatsLayout;
+  bookedSeats: BookedSeat[];
 }
 
 export interface BookSeatsRequest {
-    seats: BookedSeat[];
+  seats: BookedSeat[];
 }
 
 export interface BookSeatsResponse {
-    bookingId: string;
+  bookingId: string;
 }
 
 export interface Booking {
-    id: string;
-    movieSessionId: number;
-    userId: number;
-    isPaid: boolean;
-    seats: BookedSeat[];
-    bookedAt: string;
+  id: string;
+  movieSessionId: number;
+  userId: number;
+  isPaid: boolean;
+  seats: BookedSeat[];
+  bookedAt: string;
 }

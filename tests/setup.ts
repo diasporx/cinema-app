@@ -1,11 +1,10 @@
-import { vi } from 'vitest'
-import { ref } from 'vue'
+import { vi } from 'vitest';
 
 // Mock Vue's ref function globally
 vi.mock('vue', async () => {
-  const actual = await vi.importActual('vue')
+  const actual = await vi.importActual('vue');
   return {
     ...actual,
-    ref: vi.fn((value) => ({ value }))
-  }
-})
+    ref: vi.fn(value => ({ value })),
+  };
+});
