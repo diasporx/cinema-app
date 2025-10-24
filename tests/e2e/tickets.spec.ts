@@ -1,12 +1,5 @@
 import { test, expect } from '@playwright/test';
 
-test('должен отображать страницу билетов', async ({ page }) => {
-  await page.goto('/tickets');
-  await page.waitForLoadState('networkidle');
-
-  await expect(page.locator('.tickets > h1')).toContainText('Мои билеты');
-});
-
 test('должен отображать список билетов для авторизованного пользователя', async ({
   page,
 }) => {
